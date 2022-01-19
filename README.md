@@ -1,3 +1,24 @@
+# UPDATED FOR RARITY RANK OUTPUT
+
+After installing via npm install, run the program to generate your images and metadata.
+
+In order for this to work, all layers information will need to still be in folders. I recommend backing up this data immediately!
+
+To get rarity data, run the following:
+
+node ./utils/rarity_output.js
+
+then,
+
+node ./utils/rarity_ranks.js
+
+You will have 3 extra JSON files with useful data! 
+
+
+You should be done! If you appreciate this, feel free to support my project. [Team_Enlighten_ OpenSea](https://opensea.io/collection/caterpie-collection)
+
+
+
 # Welcome to HashLips 👄
 
 ![](https://github.com/HashLips/hashlips_art_engine/blob/main/logo.png)
