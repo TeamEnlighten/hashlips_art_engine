@@ -3,10 +3,10 @@ const fs = require("fs");
 const buildDir = `${basePath}/build`;
 
 // read json data
-let rarityData = fs.readFileSync(`${basePath}/build/json/rarity.json`);
+let rarityData = fs.readFileSync(`${basePath}/build/rarity/rarity.json`);
 let rareData = JSON.parse(rarityData);
 
-let attributeData = fs.readFileSync(`${basePath}/build/json/attributes.json`);
+let attributeData = fs.readFileSync(`${basePath}/build/rarity/attributes.json`);
 let attrData = JSON.parse(attributeData);
 
 //sets empty values
@@ -48,11 +48,11 @@ rankFinal.forEach((item, i) => {
 item.rank = i + 1;
 });
 
-//console.log(rankFinal)
+console.log("Rarity Ranks have been generated! Check the rarityRank.json in your build folder.")
 
 //writes rank to a JSON
 const writeRarityRanking = (_data) => {
-    fs.writeFileSync(`${buildDir}/json/rarityRank.json`, _data);
+    fs.writeFileSync(`${buildDir}/rarity/rarityRank.json`, _data);
   };
 
   writeRarityRanking(JSON.stringify(rankFinal, null, 2));
