@@ -7,6 +7,8 @@ const { layerConfigurations } = require(`${basePath}/src/config.js`);
 
 const { getElements } = require("../src/main.js");
 
+fs.mkdirSync(`${buildDir}/rarity`);
+
 // read json data
 let rawdata = fs.readFileSync(`${basePath}/build/json/_metadata.json`);
 let data = JSON.parse(rawdata);
@@ -83,7 +85,7 @@ for (var layer in rarityData) {
     rarityData[layer][attribute].chance = chance
 
     //write rarity score
-    rarityData[layer][attribute].rarity_score = (1 / rarityData[layer][attribute].occurrence / 111);
+    rarityData[layer][attribute].rarity_score = (1 / rarityData[layer][attribute].occurrence / editionSize);
 
     // show two decimal places in percent
     rarityData[layer][attribute].occurrence =
@@ -105,16 +107,19 @@ for (var layer in rarityData) {
   } 
 }
 
+
+console.log("Rarity data has been generated! Now you can run node ./utils/rarity_ranks.js")
+
 //writes JSON for Attribute data
 const writeAttributes = (_data2) => {
-  fs.writeFileSync(`${buildDir}/json/attributes.json`, _data2);
+  fs.writeFileSync(`${buildDir}/rarity/attributes.json`, _data2);
 };
 
 writeAttributes(JSON.stringify(attributeList, null, 2));
 
 //writes JSON for Rarity data
 const writeRarity = (_data) => {
-    fs.writeFileSync(`${buildDir}/json/rarity.json`, _data);
+    fs.writeFileSync(`${buildDir}/rarity/rarity.json`, _data);
   };
 
   writeRarity(JSON.stringify(rarityList, null, 2));
